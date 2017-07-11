@@ -14,6 +14,8 @@ ADD . /tmp/raspbian-live-build
 
 WORKDIR /tmp/raspbian-live-build
 
+RUN usermod -aG sudo 1000
+
 CMD ["mount", "binfmt_misc", "-t", "binfmt_misc", "/proc/sys/fs/binfmt_misc"]
 CMD ["update-binfmts", "--enable"]
 CMD ["make"]
