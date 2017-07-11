@@ -14,7 +14,7 @@ ADD . /tmp/raspbian-live-build
 
 WORKDIR /tmp/raspbian-live-build
 
-RUN usermod -aG sudo 1000
+RUN useradd -u 1000 jenkins && echo 'jenkins ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers 
 
 CMD ["mount", "binfmt_misc", "-t", "binfmt_misc", "/proc/sys/fs/binfmt_misc"]
 CMD ["update-binfmts", "--enable"]
